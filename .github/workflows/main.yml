@@ -32,6 +32,5 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
           IMAGE_TAG: latest
         run: |
-          echo "Building and pushing image to $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-          docker build -f docker/8.2/Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+            docker build -f docker/8.2/Dockerfile --build-arg WWWGROUP=1000 -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+            docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
