@@ -33,4 +33,4 @@ jobs:
           IMAGE_TAG: latest
         run: |
             docker build -f docker/8.2/Dockerfile --build-arg WWWGROUP=1000 -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-            docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+            docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG 
