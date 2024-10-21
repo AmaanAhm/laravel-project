@@ -1,0 +1,10 @@
+{
+  "name": "Laravel Sail Dev Container",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "laravel.test",
+  "workspaceFolder": "/var/www/html",
+  "shutdownAction": "stopCompose",
+  "postCreateCommand": "composer install && npm install"
+}
