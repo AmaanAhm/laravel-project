@@ -5,8 +5,6 @@ LABEL maintainer="Taylor Otwell"
 ARG WWWGROUP
 ARG NODE_VERSION=20
 ARG POSTGRES_VERSION=15
-ARG WWWGROUP=1000
-
 
 WORKDIR /var/www/html
 
@@ -61,12 +59,11 @@ RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.2
 RUN groupadd --force -g $WWWGROUP sail
 RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 sail
 
-COPY docker/8.2/start-container /usr/local/bin/start-container
-COPY docker/8.2/supervisord.conf /etc/supervisor/conf.d/supervisord.conf 
-COPY docker/8.2/php.ini /etc/php/8.2/cli/conf.d/99-sail.ini
-
+COPY start-container /usr/local/bin/start-container
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY php.ini /etc/php/8.2/cli/conf.d/99-sail.ini
 RUN chmod +x /usr/local/bin/start-container
-  
+
 EXPOSE 80/tcp
 
 ENTRYPOINT ["start-container"]
